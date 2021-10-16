@@ -55,11 +55,14 @@ public class DataInput {
             }
             initializeMatrix();
             while ((line = input.readLine()) != null && line.length() > 0) {
+
                 for (int i = 0; i < line.length(); i++) {
                     matrix[x][y] = Integer.parseInt(String.valueOf(line.charAt(i)));
+                    y++;
                 }
-                y++;
-                x = 0;
+
+                x++;
+                y = 0;
             }
         } catch (Exception ex) {
             throw ex;
