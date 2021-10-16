@@ -94,7 +94,7 @@ public class BFSProcessor {
     private List<Integer> findNodesWthoutNeighbors() {
         List<Integer> result1 = new ArrayList<Integer>();
         for (int i = 0; i < matrix.length; i++) {
-            if (visitedNodes.contains(new Integer(i)) && !result.contains(new Integer(i))) {
+            if (!result.contains(new Integer(i))) {
                 result1.add(new Integer(i));
             }
         }
