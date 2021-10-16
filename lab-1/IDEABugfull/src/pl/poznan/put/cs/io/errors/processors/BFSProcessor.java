@@ -27,7 +27,7 @@ public class BFSProcessor {
         if (beginningNode == -1) {
             return null;
         }
-        queue.add(new Integer(beginningNode));
+
         search(beginningNode);
         result.addAll(findNodesWthoutNeighbors());
         return result;
@@ -40,14 +40,15 @@ public class BFSProcessor {
      */
     private void search(int nodeNo) {
         visitedNodes.add(new Integer(nodeNo));
-        List<Integer> allValidNeighbors = getAllValidNeighbors(nodeNo);
+        List<Integer> allValidNeighbors = getAllValidNeighbors(nodeNo); //ok
         queue.addAll(allValidNeighbors);
-        visitedNodes.addAll(allValidNeighbors);
-        Integer head = queue.poll();
+
+        Integer head = queue.poll(); //returns and removes the element at the front of the container
         if (head == null) {
             return;
         }
         result.add(new Integer(nodeNo));
+
         if (queue.peek() == null) {
             return;
         }
