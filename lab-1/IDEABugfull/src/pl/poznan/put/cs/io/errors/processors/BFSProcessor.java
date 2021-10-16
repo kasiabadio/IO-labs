@@ -43,12 +43,12 @@ public class BFSProcessor {
         List<Integer> allValidNeighbors = getAllValidNeighbors(nodeNo); //ok
         queue.addAll(allValidNeighbors);
 
+        result.add(new Integer(nodeNo));
+
         Integer head = queue.poll(); //returns and removes the element at the front of the container
         if (head == null) {
             return;
         }
-        result.add(new Integer(nodeNo));
-
 
         search(head);
     }
@@ -92,12 +92,12 @@ public class BFSProcessor {
      * @return list of nodes indexes without neighbors
      */
     private List<Integer> findNodesWthoutNeighbors() {
-        List<Integer> result = new ArrayList<Integer>();
+        List<Integer> result1 = new ArrayList<Integer>();
         for (int i = 0; i < matrix.length; i++) {
-            if (!visitedNodes.contains(new Integer(i))) {
-                result.add(new Integer(i));
+            if (visitedNodes.contains(new Integer(i)) && !result.contains(new Integer(i))) {
+                result1.add(new Integer(i));
             }
         }
-        return result;
+        return result1;
     }
 }
