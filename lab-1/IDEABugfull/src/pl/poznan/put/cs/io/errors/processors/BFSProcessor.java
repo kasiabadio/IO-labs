@@ -49,9 +49,7 @@ public class BFSProcessor {
         }
         result.add(new Integer(nodeNo));
 
-        if (queue.peek() == null) {
-            return;
-        }
+
         search(head);
     }
 
@@ -81,7 +79,7 @@ public class BFSProcessor {
         List<Integer> neighbors = new ArrayList<Integer>();
         for (int i = 0; i < matrix.length; i++) {
             if (matrix[nodeNo][i] == 1
-                    && !result.contains(new Integer(i))) {
+                    && !result.contains(new Integer(i)) && !queue.contains(new Integer(i))) {
                 neighbors.add(new Integer(i));
             }
         }
