@@ -71,7 +71,7 @@ public class BFSProcessor {
     }
 
     /**
-     * Returns the neighbors if a node, which haven't been visited yet
+     * Returns the neighbors of a node, which haven't been visited yet
      *
      * @param nodeNo node index
      * @return the list of nodes indexes, which haven't been visited yet
@@ -80,7 +80,7 @@ public class BFSProcessor {
         List<Integer> neighbors = new ArrayList<Integer>();
         for (int i = 0; i < matrix.length; i++) {
             if (matrix[nodeNo][i] == 1
-                    && visitedNodes.contains(new Integer(i))) {
+                    && !visitedNodes.contains(new Integer(i))) {
                 neighbors.add(new Integer(i));
             }
         }
