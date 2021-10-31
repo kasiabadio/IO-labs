@@ -1,2 +1,2 @@
 # Katarzyna Badio
-# 20-06-1999
+# Inżynieria Oprogramowania 2021
