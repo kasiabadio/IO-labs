@@ -1,2 +1,2 @@
 # Katarzyna Badio
-# 20-06-1999
+# Informatyka WI 2021
