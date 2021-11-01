@@ -11,6 +11,7 @@ public class Program {
         Program program = new Program();
         // Prints "Hello, World" to the terminal window.
         program.print_name("Kasia");
+        System.out.println("Welcome!");
     }
 
 }
