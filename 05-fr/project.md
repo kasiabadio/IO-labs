@@ -50,10 +50,11 @@ Osoba chcąca zakupić produkt na aukcji.
 
 [Sprzedający](#ac1):
 * [UC1](#uc1): Wystawienie produktu na aukcję
-* ...
+* [UC2](#uc2): Wysłanie produktu
 
 [Kupujący](#ac2)
-* ...
+* [UC3](#uc3) : Podbicie ceny produktu
+* [UC4](#uc4) : Wysłanie pieniędzy sprzedającemu
 
 ---
 <a id="uc1"></a>
@@ -77,21 +78,54 @@ Osoba chcąca zakupić produkt na aukcji.
 ---
 
 <a id="uc2"></a>
-### UC2: ...
 
-**Aktorzy:** [Sprzedający](#ac1), [Kupujący](#ac2), ...
+
+
+### UC2: Wysłanie produktu
+
+**Aktorzy:**  [Sprzedający](#ac1)
 
 **Scenariusz główny:**
-1. ...
+1. [Sprzedajacy](#ac1) zatwierdza otrzymanie pieniędzy od kupującego.
+2. [Sprzedający](#ac1) zatwierdza wysłanie produktu.
 
 **Scenariusze alternatywne:** 
 
-1.A. ...
-* 4.A.1. ...
+### UC3: Podbicie ceny produktu
+
+**Aktorzy:** [Kupujący](#ac2)
+
+**Scenariusz główny:**
+1. [Kupujący](#ac2) zgłasza do systemu chęć przebicia ceny produktu.
+2. System prosi o podanie nowej ceny produktu.
+3. [Kupujący](#ac2) podaje nową cenę produktu.
+4. System weryfikuje poprawność wpisanej ceny, która musi być wyższa od obecnej ceny o przynajmniej 1 zł.
+5. System informuje o pomyślnym przebiciu ceny.
+6. Jeżeli cena ustanowiona przez kupującego jest w momencie zakończenia aukcji najwyższa, to [Kupujący](#ac2) wygrywa aukcję.
+7. 
+
+**Scenariusze alternatywne:**   
+1.A. [Kupujący](#ac2) pasuje.    
+* 1.A.1. Przejdź do kroku 1    
+
+1.B. [Kupujący](#ac2) nie wykonał ruchu w maksymalnym czasie, który był przeznaczony na aukcję.  
+
+5.A.  Podano niepoprawną nową cenę.
+* 5.A.1. Przejdź do kroku 2
+
+
+### UC4: Wysłanie pieniędzy sprzedającemu
+
+**Aktorzy:** [Kupujący](#ac2)
+
+**Scenariusz główny:**
+1. [Kupujący](#ac2) przesyła pieniądze sprzedającemu.
+2. [Kupujący]()
+**Scenariusze alternatywne:**   
 
 ---
 
-## Obiewkty biznesowe (inaczje obiekty dziedzinowe lub informatycjne)
+## Obiekty biznesowe (inaczej obiekty dziedzinowe lub informatyczne)
 
 ### BO1: Aukcja
 
