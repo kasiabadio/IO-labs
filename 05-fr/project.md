@@ -12,7 +12,7 @@ Specyfikacja wymagań funkcjonalnych w ramach informatyzacji procesu sprzedaży 
 
 **Aktorzy:** [Sprzedający](#ac1), [Kupujący](#ac2)
 
-**Opis:** Proces biznesowy opisujący sprzedaż za pomocą mechanizmu aukcyjnego. |
+**Opis:** Proces biznesowy opisujący sprzedaż za pomocą mechanizmu aukcyjnego. 
 
 **Scenariusz główny:**
 1. [Sprzedający](#ac1) wystawia produkt na aukcję. ([UC1](#uc1))
@@ -43,6 +43,11 @@ Osoba oferująca towar na aukcji.
 
 Osoba chcąca zakupić produkt na aukcji.
 
+<a id="ac2"></a>
+### AC3: Pośrednik
+
+Osoba pośrednicząca w przelaniu pieniędzy od kupującego do sprzedającego.
+
 
 ## Przypadki użycia poziomu użytkownika
 
@@ -52,12 +57,16 @@ Osoba chcąca zakupić produkt na aukcji.
 * [UC1](#uc1): Wystawienie produktu na aukcję
 * [UC2](#uc2): Wysłanie produktu
 
-[Kupujący](#ac2)
+[Kupujący](#ac2):
 * [UC3](#uc3) : Podbicie ceny produktu
-* [UC4](#uc4) : Wysłanie pieniędzy sprzedającemu
+* [UC4](#uc4) : Wysłanie pieniędzy 
+
+[Pośrednik](#ac3):
+* [UC5](#uc5) : Zatwierdzenie transakcji 
 
 ---
 <a id="uc1"></a>
+
 ### UC1: Wystawienie produktu na aukcję
 
 **Aktorzy:** [Sprzedający](#ac1)
@@ -79,17 +88,17 @@ Osoba chcąca zakupić produkt na aukcji.
 
 <a id="uc2"></a>
 
-
-
 ### UC2: Wysłanie produktu
 
-**Aktorzy:**  [Sprzedający](#ac1)
+**Aktorzy:**  [Sprzedający](#ac1), [Kupujący](#ac2)
 
 **Scenariusz główny:**
-1. [Sprzedajacy](#ac1) zatwierdza otrzymanie pieniędzy od kupującego.
-2. [Sprzedający](#ac1) zatwierdza wysłanie produktu.
+1. [Sprzedający](#ac1) otrzymuje informację od [Pośrednika](#ac3), że przelano mu pieniądze.
+2. [Sprzedający](#ac1) usuwa produkt z aukcji.
+3. [Sprzedający](#ac1) zaznacza dane [Kupującego](#ac2) do wysyłki.
+4. [Sprzedający](#ac1) zatwierdza wysłanie produktu.
 
-**Scenariusze alternatywne:** 
+---
 
 ### UC3: Podbicie ceny produktu
 
@@ -100,9 +109,8 @@ Osoba chcąca zakupić produkt na aukcji.
 2. System prosi o podanie nowej ceny produktu.
 3. [Kupujący](#ac2) podaje nową cenę produktu.
 4. System weryfikuje poprawność wpisanej ceny, która musi być wyższa od obecnej ceny o przynajmniej 1 zł.
-5. System informuje o pomyślnym przebiciu ceny.
-6. Jeżeli cena ustanowiona przez kupującego jest w momencie zakończenia aukcji najwyższa, to [Kupujący](#ac2) wygrywa aukcję.
-7. 
+5. Jeżeli cena ustanowiona przez [Kupującego](#ac2) jest w momencie zakończenia aukcji najwyższa, to [Kupujący](#ac2) wygrywa aukcję.
+
 
 **Scenariusze alternatywne:**   
 1.A. [Kupujący](#ac2) pasuje.    
@@ -110,18 +118,32 @@ Osoba chcąca zakupić produkt na aukcji.
 
 1.B. [Kupujący](#ac2) nie wykonał ruchu w maksymalnym czasie, który był przeznaczony na aukcję.  
 
-5.A.  Podano niepoprawną nową cenę.
-* 5.A.1. Przejdź do kroku 2
+4.A.  Podano niepoprawną nową cenę.
+* 4.A.1. Przejdź do kroku 2
 
+---
+### UC4: Wysłanie pieniędzy
 
-### UC4: Wysłanie pieniędzy sprzedającemu
-
-**Aktorzy:** [Kupujący](#ac2)
+**Aktorzy:** [Kupujący](#ac2), [Pośrednik](#ac3)
 
 **Scenariusz główny:**
-1. [Kupujący](#ac2) przesyła pieniądze sprzedającemu.
-2. [Kupujący]()
+1. System prosi o podanie danych do wysyłki.
+2. [Kupujący](#ac2) wpisuje dane do wysyłki do systemu.
+3. System weryfikuje poprawność wprowadzonych danych. 
+4. [Kupujący](#ac2) przesyła pieniądze [Pośrednikowi](#ac3).
+
+
 **Scenariusze alternatywne:**   
+2.A. Podano niepoprawne dane.  
+* 2.A.1. Przejdź do kroku 1.
+
+### UC5: Zatwierdzenie transakcji
+
+**Aktorzy** [Sprzedający](#ac1), [Kupujący](#ac2), [Pośrednik](#ac3)
+
+**Scenariusz główny:**
+1. [Pośrednik](#ac3) otrzymuje pieniądze od [Kupującego](#ac2).
+2. [Pośrednik](#ac3) przesyła pieniądze [Sprzedającemu](#ac1).
 
 ---
 
@@ -151,9 +173,10 @@ Aukcję wygrywa ten z [Kupujący](#ac2)ch, który w momencie jej zakończenia (u
 ## Macierz CRUDL
 
 
-| Przypadek użycia                                  | Aukcja | Produkt | ... |
-| ------------------------------------------------- | ------ | ------- | --- |
-| UC1: Wystawienia produktu na aukcję               |    C   |    C    | ... |
-| ???                                               |  ...   |  ...    | ... |
-
-
+| Przypadek użycia                                  | Aukcja | Produkt | 
+| ------------------------------------------------- | ------ | ------- | 
+| UC1: Wystawienia produktu na aukcję               |    C   |    C    | 
+| UC2: Wysłanie produktu                            |   D,R  |    D    | 
+| UC3: Podbicie ceny produktu                       |    U   |   R,U   |
+| UC4: Wysłanie pieniędzy                           |    U   |         |
+| UC5: Zatwierdzenie transakcji                     |    U   |         |
